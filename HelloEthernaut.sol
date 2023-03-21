@@ -49,10 +49,12 @@ contract Instance {
 
 // Solution for this lvl
 // await contract.info()
+// await contract.info1()
 // await contract.info2('hello')
 // var a = await contract.infoNum()
 // a.toNumber() == 42
 // await contract.info42()
+// await contract.theMethodName()
 // await contract.method7123949()
 // await contract.password() get the password
 // await contract.authenticate('ethernaut0')
