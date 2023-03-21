@@ -56,4 +56,4 @@ contract Instance {
 // await contract.method7123949()
 // await contract.password() get the password
 // await contract.authenticate('ethernaut0')
-// If chrome version 
+// If chrome version >= 62, await keyword can be ingnored
