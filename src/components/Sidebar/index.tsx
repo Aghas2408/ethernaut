@@ -15,12 +15,12 @@ const Sidebar = ({ children }: Props) => {
       icon: <img src="/svgexport-3.svg" alt="image" className="icon" />,
     },
     {
-      path: "/dashboard",
-      name: "Lvl1",
-      icon: <img src="/svgexport-3.svg" alt="image" className="icon" />,
+      path: "/fallback",
+      name: "Lvl2",
+      icon: <img src="/svgexport-4.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
+      path: "/fallout",
       name: "Lvl3",
       icon: <img src="/svgexport-5.svg" alt="image" className="icon" />,
     },

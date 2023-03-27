@@ -1,11 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Sidebar from "./components/Sidebar";
-import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
-import Dashboard from "./pages/Dashboard";
+import { BrowserRouter } from "react-router-dom";
+import Fallout from "./pages/Fallout";
+import Fallback from "./pages/Fallback";
 import HelloEthernaut from "./pages/HelloEthernaut";
+import Sidebar from "./components/Sidebar";
+
+import "./App.css";
 
 const App = () => {
   return (
@@ -13,7 +13,8 @@ const App = () => {
       <Sidebar>
         <Routes>
           <Route path="/helloEthernaut" element={<HelloEthernaut />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/fallback" element={<Fallback />} />
+          <Route path="/fallout" element={<Fallout />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
