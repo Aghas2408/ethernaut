@@ -1,0 +1,17 @@
+.text-div {
+  background-color: rgb(107 114 128);
+  color: white;
+  border-radius: 4px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.text-div h2 {
+  margin-top: 0;
+}
+
+.text-div p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 12px;
+}

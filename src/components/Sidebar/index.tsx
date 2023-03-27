@@ -10,14 +10,14 @@ const Sidebar = ({ children }: Props) => {
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
-      path: "/dashboard",
+      path: "/helloEthernaut",
       name: "Lvl1",
       icon: <img src="/svgexport-3.svg" alt="image" className="icon" />,
     },
     {
-      path: "/about",
+      path: "/dashboard",
       name: "Lvl1",
-      iicon: <img src="/svgexport-4.svg" alt="image" className="icon" />,
+      icon: <img src="/svgexport-3.svg" alt="image" className="icon" />,
     },
     {
       path: "/",

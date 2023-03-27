@@ -5,15 +5,15 @@ import Sidebar from "./components/Sidebar";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
 import Dashboard from "./pages/Dashboard";
-import About from "./pages/About";
+import HelloEthernaut from "./pages/HelloEthernaut";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Sidebar>
         <Routes>
+          <Route path="/helloEthernaut" element={<HelloEthernaut />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/about" element={<About />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
