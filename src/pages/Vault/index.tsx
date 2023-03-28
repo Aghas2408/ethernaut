@@ -4,40 +4,37 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiFillCopy, AiOutlineFileDone } from "react-icons/ai";
 import TextDiv from "../../components/TextDiv";
 
-const Token = () => {
+const Vault = () => {
   const [copy, setCopy] = useState(false);
   const codeString = `
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
-
-contract Token {
-
-  mapping(address => uint) balances;
-  uint public totalSupply;
-
-  constructor(uint _initialSupply) public {
-    balances[msg.sender] = totalSupply = _initialSupply;
-  }
-
-  function transfer(address _to, uint _value) public returns (bool) {
-    require(balances[msg.sender] - _value >= 0);
-    balances[msg.sender] -= _value;
-    balances[_to] += _value;
-    return true;
-  }
-
-  function balanceOf(address _owner) public view returns (uint balance) {
-    return balances[_owner];
-  }
-}`;
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.0;
+  
+  contract Vault {
+    bool public locked;
+    bytes32 private password;
+  
+    constructor(bytes32 _password) {
+      locked = true;
+      password = _password;
+    }
+  
+    function unlock(bytes32 _password) public {
+      if (password == _password) {
+        locked = false;
+      }
+    }
+  }`;
 
   const solutionCode = `
-  await contract.transfer('0x0000000000000000000000000000000000000000', 21)
+  password = await web3.eth.getStorageAt(contract.address, 1)
+
+  await contract.unlock(password)
 `;
 
   return (
     <div>
-      <h1 className="headerText">Token</h1>
+      <h1 className="headerText">Vault</h1>
       <div className="content">
         <div className="highlighterHeader">
           <p className="smallText"> Example code</p>
@@ -81,8 +78,9 @@ contract Token {
       <div className="textBox">
         <TextDiv
           title="Hack"
-          text="Let's call transfer with a zero address (or any address other than player) as _to and 21 as _value to transfer. Because of solidity version here we can overflow values.
-          For example player balance equal to 20, and we want to transfer 21, 20-21 == 2^256 - 1. And this is greater then zero, and also important this line => balances[msg.sender] -= _value; result also will be 2^256 - 1"
+          text="Password state variable is private, it can still read a storage variable by determining it's storage slot. Therefore sensitive information should not be stored on-chain, even if it is specified private.
+
+          Above, the password is at a storage slot of 1 in Vault."
         />
       </div>
       <SyntaxHighlighter
@@ -100,4 +98,4 @@ contract Token {
   );
 };
 
-export default Token;
+export default Vault;

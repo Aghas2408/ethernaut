@@ -7,10 +7,11 @@ import Fallback from "./pages/Fallback";
 import CoinFlip from "./pages/CoinFlip";
 import Telephone from "./pages/Telephone";
 import HelloEthernaut from "./pages/HelloEthernaut";
+import Vault from "./pages/Vault";
+import Force from "./pages/Force";
+import Delegation from "./pages/Delegation";
 
 import "./App.css";
-import Delegation from "./pages/Delegation";
-import Force from "./pages/Force";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/token" element={<Token />} />
           <Route path="/delegation" element={<Delegation />} />
           <Route path="/force" element={<Force />} />
+          <Route path="/vault" element={<Vault />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>

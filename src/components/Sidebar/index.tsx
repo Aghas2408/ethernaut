@@ -50,8 +50,8 @@ const Sidebar = ({ children }: Props) => {
       icon: <img src="/svgexport-10.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/vault",
+      name: "Lvl9",
       icon: <img src="/svgexport-11.svg" alt="image" className="icon" />,
     },
     {
