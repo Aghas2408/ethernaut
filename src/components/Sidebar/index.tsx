@@ -70,8 +70,8 @@ const Sidebar = ({ children }: Props) => {
       icon: <img src="/svgexport-14.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/privacy",
+      name: "Lvl12",
       icon: <img src="/svgexport-15.svg" alt="image" className="icon" />,
     },
     {

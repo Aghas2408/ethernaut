@@ -13,6 +13,7 @@ import Delegation from "./pages/Delegation";
 import King from "./pages/King";
 import ReEntrancy from "./pages/Re-entrancy";
 import Elevator from "./pages/Elevator";
+import Privacy from "./pages/Privacy";
 
 import "./App.css";
 
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/king" element={<King />} />
           <Route path="/reEntrancy" element={<ReEntrancy />} />
           <Route path="/elevator" element={<Elevator />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
