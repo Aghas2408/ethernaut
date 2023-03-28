@@ -25,28 +25,28 @@ const Sidebar = ({ children }: Props) => {
       icon: <img src="/svgexport-5.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/coinflip",
+      name: "Lvl4",
       icon: <img src="/svgexport-6.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/telephone",
+      name: "Lvl5",
       icon: <img src="/svgexport-7.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/token",
+      name: "Lvl6",
       icon: <img src="/svgexport-8.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/delegation",
+      name: "Lvl7",
       icon: <img src="/svgexport-9.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/force",
+      name: "Lvl8",
       icon: <img src="/svgexport-10.svg" alt="image" className="icon" />,
     },
     {

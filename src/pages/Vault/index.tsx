@@ -4,55 +4,40 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiFillCopy, AiOutlineFileDone } from "react-icons/ai";
 import TextDiv from "../../components/TextDiv";
 
-const Fallout = () => {
+const Token = () => {
   const [copy, setCopy] = useState(false);
   const codeString = `
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-import "openzeppelin-contracts-06/math/SafeMath.sol";
+contract Token {
 
-contract Fallout {
-    using SafeMath for uint256;
-    mapping(address => uint) allocations;
-    address payable public owner;
+  mapping(address => uint) balances;
+  uint public totalSupply;
 
-    /* constructor */
-    function Fal1out() public payable {
-        owner = msg.sender;
-        allocations[owner] = msg.value;
-    }
+  constructor(uint _initialSupply) public {
+    balances[msg.sender] = totalSupply = _initialSupply;
+  }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "caller is not the owner");
-        _;
-    }
+  function transfer(address _to, uint _value) public returns (bool) {
+    require(balances[msg.sender] - _value >= 0);
+    balances[msg.sender] -= _value;
+    balances[_to] += _value;
+    return true;
+  }
 
-    function allocate() public payable {
-        allocations[msg.sender] = allocations[msg.sender].add(msg.value);
-    }
-
-    function sendAllocation(address payable allocator) public {
-        require(allocations[allocator] > 0);
-        allocator.transfer(allocations[allocator]);
-    }
-
-    function collectAllocations() public onlyOwner {
-        msg.sender.transfer(address(this).balance);
-    }
-
-    function allocatorBalance(address allocator) public view returns (uint) {
-        return allocations[allocator];
-    }
+  function balanceOf(address _owner) public view returns (uint balance) {
+    return balances[_owner];
+  }
 }`;
 
   const solutionCode = `
-  await contract.Fal1out()
+  await contract.transfer('0x0000000000000000000000000000000000000000', 21)
 `;
 
   return (
     <div>
-      <h1 className="headerText">Fallout</h1>
+      <h1 className="headerText">Token</h1>
       <div className="content">
         <div className="highlighterHeader">
           <p className="smallText"> Example code</p>
@@ -96,7 +81,8 @@ contract Fallout {
       <div className="textBox">
         <TextDiv
           title="Hack"
-          text="Note that in Solidity versions prior to 0.5.0, the constructor function had a special name constructor(). Starting from Solidity version 0.5.0, the constructor can have the same name as the contract. So here just mistake."
+          text="Let's call transfer with a zero address (or any address other than player) as _to and 21 as _value to transfer. Because of solidity version here we can overflow values.
+          For example player balance equal to 20, and we want to transfer 21, 20-21 == 2^256 - 1. And this is greater then zero, and also important this line => balances[msg.sender] -= _value; result also will be 2^256 - 1"
         />
       </div>
       <SyntaxHighlighter
@@ -114,4 +100,4 @@ contract Fallout {
   );
 };
 
-export default Fallout;
+export default Token;

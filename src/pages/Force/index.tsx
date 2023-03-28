@@ -4,55 +4,42 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiFillCopy, AiOutlineFileDone } from "react-icons/ai";
 import TextDiv from "../../components/TextDiv";
 
-const Fallout = () => {
+const Force = () => {
   const [copy, setCopy] = useState(false);
   const codeString = `
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.0;
+  
+  contract Force {/*
+  
+                     MEOW ?
+           /\_/\   /
+      ____/ o o \
+    /~____  =ø= /
+   (______)__m_m)
+  
+  */}`;
+
+  const solutionCode = `
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-import "openzeppelin-contracts-06/math/SafeMath.sol";
+contract ForceSupply {
+    uint public balance = 0;
 
-contract Fallout {
-    using SafeMath for uint256;
-    mapping(address => uint) allocations;
-    address payable public owner;
-
-    /* constructor */
-    function Fal1out() public payable {
-        owner = msg.sender;
-        allocations[owner] = msg.value;
+    function destruct(address payable _to) external payable {
+        selfdestruct(_to);
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "caller is not the owner");
-        _;
+    function deposit() external payable {
+        balance += msg.value;
     }
-
-    function allocate() public payable {
-        allocations[msg.sender] = allocations[msg.sender].add(msg.value);
-    }
-
-    function sendAllocation(address payable allocator) public {
-        require(allocations[allocator] > 0);
-        allocator.transfer(allocations[allocator]);
-    }
-
-    function collectAllocations() public onlyOwner {
-        msg.sender.transfer(address(this).balance);
-    }
-
-    function allocatorBalance(address allocator) public view returns (uint) {
-        return allocations[allocator];
-    }
-}`;
-
-  const solutionCode = `
-  await contract.Fal1out()
+}
 `;
 
   return (
     <div>
-      <h1 className="headerText">Fallout</h1>
+      <h1 className="headerText">Force</h1>
       <div className="content">
         <div className="highlighterHeader">
           <p className="smallText"> Example code</p>
@@ -96,7 +83,10 @@ contract Fallout {
       <div className="textBox">
         <TextDiv
           title="Hack"
-          text="Note that in Solidity versions prior to 0.5.0, the constructor function had a special name constructor(). Starting from Solidity version 0.5.0, the constructor can have the same name as the contract. So here just mistake."
+          text="Simple transfer or send won't work because the Force implements neither receive nor fallaback functions. Calls with any value will revert.
+
+          However, the checks can be bypassed by using selfdestruct of an intermediate contract - Payer which would specify Force's address as beneficiary of it's funds after it's self-destruction.
+          In the current version of solidity selfdestruct deprecated, but under this command working another one, which just transfer balance, doesn't delete the byte code."
         />
       </div>
       <SyntaxHighlighter
@@ -114,4 +104,4 @@ contract Fallout {
   );
 };
 
-export default Fallout;
+export default Force;
