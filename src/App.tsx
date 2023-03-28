@@ -10,6 +10,9 @@ import HelloEthernaut from "./pages/HelloEthernaut";
 import Vault from "./pages/Vault";
 import Force from "./pages/Force";
 import Delegation from "./pages/Delegation";
+import King from "./pages/King";
+import ReEntrancy from "./pages/Re-entrancy";
+import Elevator from "./pages/Elevator";
 
 import "./App.css";
 
@@ -27,6 +30,9 @@ const App = () => {
           <Route path="/delegation" element={<Delegation />} />
           <Route path="/force" element={<Force />} />
           <Route path="/vault" element={<Vault />} />
+          <Route path="/king" element={<King />} />
+          <Route path="/reEntrancy" element={<ReEntrancy />} />
+          <Route path="/elevator" element={<Elevator />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>

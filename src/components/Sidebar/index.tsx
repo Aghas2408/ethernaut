@@ -11,62 +11,62 @@ const Sidebar = ({ children }: Props) => {
   const menuItem = [
     {
       path: "/helloEthernaut",
-      name: "Lvl1",
+      name: "Lvl0",
       icon: <img src="/svgexport-3.svg" alt="image" className="icon" />,
     },
     {
       path: "/fallback",
-      name: "Lvl2",
+      name: "Lvl1",
       icon: <img src="/svgexport-4.svg" alt="image" className="icon" />,
     },
     {
       path: "/fallout",
-      name: "Lvl3",
+      name: "Lvl2",
       icon: <img src="/svgexport-5.svg" alt="image" className="icon" />,
     },
     {
       path: "/coinflip",
-      name: "Lvl4",
+      name: "Lvl3",
       icon: <img src="/svgexport-6.svg" alt="image" className="icon" />,
     },
     {
       path: "/telephone",
-      name: "Lvl5",
+      name: "Lvl4",
       icon: <img src="/svgexport-7.svg" alt="image" className="icon" />,
     },
     {
       path: "/token",
-      name: "Lvl6",
+      name: "Lvl5",
       icon: <img src="/svgexport-8.svg" alt="image" className="icon" />,
     },
     {
       path: "/delegation",
-      name: "Lvl7",
+      name: "Lvl6",
       icon: <img src="/svgexport-9.svg" alt="image" className="icon" />,
     },
     {
       path: "/force",
-      name: "Lvl8",
+      name: "Lvl7",
       icon: <img src="/svgexport-10.svg" alt="image" className="icon" />,
     },
     {
       path: "/vault",
-      name: "Lvl9",
+      name: "Lvl8",
       icon: <img src="/svgexport-11.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/king",
+      name: "Lvl9",
       icon: <img src="/svgexport-12.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/reEntrancy",
+      name: "Lvl10",
       icon: <img src="/svgexport-13.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/elevator",
+      name: "Lvl11",
       icon: <img src="/svgexport-14.svg" alt="image" className="icon" />,
     },
     {
