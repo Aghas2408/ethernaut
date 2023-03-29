@@ -14,6 +14,9 @@ import King from "./pages/King";
 import ReEntrancy from "./pages/Re-entrancy";
 import Elevator from "./pages/Elevator";
 import Privacy from "./pages/Privacy";
+import GatekeeperOne from "./pages/GatekeeperOne";
+import GatekeeperTwo from "./pages/GatekeeperTwo";
+import NaughtCoin from "./pages/NaughtCoin";
 
 import "./App.css";
 
@@ -35,6 +38,9 @@ const App = () => {
           <Route path="/reEntrancy" element={<ReEntrancy />} />
           <Route path="/elevator" element={<Elevator />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/gatekeeperOne" element={<GatekeeperOne />} />
+          <Route path="/gatekeeperTwo" element={<GatekeeperTwo />} />
+          <Route path="/naughtCoin" element={<NaughtCoin />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>

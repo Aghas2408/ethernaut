@@ -5,7 +5,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const Sidebar = ({ children }: Props) => {
+const GatekeeperOne = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
@@ -75,18 +75,18 @@ const Sidebar = ({ children }: Props) => {
       icon: <img src="/svgexport-15.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/gatekeeperOne",
+      name: "Lvl13",
       icon: <img src="/svgexport-16.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/gatekeeperTwo",
+      name: "Lvl14",
       icon: <img src="/svgexport-17.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/naughtCoin",
+      name: "Lvl15",
       icon: <img src="/svgexport-18.svg" alt="image" className="icon" />,
     },
     {
@@ -179,4 +179,4 @@ const Sidebar = ({ children }: Props) => {
   );
 };
 
-export default Sidebar;
+export default GatekeeperOne;
