@@ -17,6 +17,11 @@ import Privacy from "./pages/Privacy";
 import GatekeeperOne from "./pages/GatekeeperOne";
 import GatekeeperTwo from "./pages/GatekeeperTwo";
 import NaughtCoin from "./pages/NaughtCoin";
+import Preservation from "./pages/Preservation";
+import Recovery from "./pages/Recovery";
+import MagicNumber from "./pages/MagicNumber";
+import AlienCodex from "./pages/AlienCodex";
+import Denial from "./pages/Denial";
 
 import "./App.css";
 
@@ -41,6 +46,11 @@ const App = () => {
           <Route path="/gatekeeperOne" element={<GatekeeperOne />} />
           <Route path="/gatekeeperTwo" element={<GatekeeperTwo />} />
           <Route path="/naughtCoin" element={<NaughtCoin />} />
+          <Route path="/preservation" element={<Preservation />} />
+          <Route path="/recovery" element={<Recovery />} />
+          <Route path="/magicNumber" element={<MagicNumber />} />
+          <Route path="/alienCodex" element={<AlienCodex />} />
+          <Route path="/alienCodex" element={<Denial />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>

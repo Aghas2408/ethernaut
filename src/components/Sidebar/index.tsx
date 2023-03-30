@@ -90,28 +90,28 @@ const GatekeeperOne = ({ children }: Props) => {
       icon: <img src="/svgexport-18.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/preservation",
+      name: "Lvl16",
       icon: <img src="/svgexport-19.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/recovery",
+      name: "Lvl17",
       icon: <img src="/svgexport-20.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/magicNumber",
+      name: "Lvl18",
       icon: <img src="/svgexport-21.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/alienCodex",
+      name: "Lvl19",
       icon: <img src="/svgexport-22.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/denial",
+      name: "Lvl20",
       icon: <img src="/svgexport-23.svg" alt="image" className="icon" />,
     },
     {
