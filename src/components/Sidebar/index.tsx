@@ -115,8 +115,8 @@ const GatekeeperOne = ({ children }: Props) => {
       icon: <img src="/svgexport-23.svg" alt="image" className="icon" />,
     },
     {
-      path: "/",
-      name: "dashbaord",
+      path: "/shop",
+      name: "Lvl21",
       icon: <img src="/svgexport-24.svg" alt="image" className="icon" />,
     },
     {
