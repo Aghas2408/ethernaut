@@ -23,6 +23,7 @@ import MagicNumber from "./pages/MagicNumber";
 import AlienCodex from "./pages/AlienCodex";
 import Denial from "./pages/Denial";
 import Shop from "./pages/Shop";
+import Dex from "./pages/Dex";
 
 import "./App.css";
 
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/alienCodex" element={<AlienCodex />} />
           <Route path="/denial" element={<Denial />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/dex" element={<Dex />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
