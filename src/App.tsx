@@ -21,6 +21,8 @@ import Preservation from "./pages/Preservation";
 import Recovery from "./pages/Recovery";
 import MagicNumber from "./pages/MagicNumber";
 import AlienCodex from "./pages/AlienCodex";
+import PuzzleWallet from "./pages/PuzzleWallet";
+import Motorbike from "./pages/Motorbike";
 import Denial from "./pages/Denial";
 import Shop from "./pages/Shop";
 import Dex from "./pages/Dex";
@@ -57,6 +59,8 @@ const App = () => {
           <Route path="/shop" element={<Shop />} />
           <Route path="/dex" element={<Dex />} />
           <Route path="/dex2" element={<Dex2 />} />
+          <Route path="/puzzleWallet" element={<PuzzleWallet />} />
+          <Route path="/motorbike" element={<Motorbike />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
